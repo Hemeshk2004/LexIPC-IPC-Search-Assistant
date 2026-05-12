@@ -1,0 +1,8 @@
+langchain
+chromadb
+duckduckgo-search
+google-generativeai
+langchain-google-genai
+python-dotenv
+pypdf
+streamlit
