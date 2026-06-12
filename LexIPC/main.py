@@ -6,6 +6,10 @@ from langchain_chroma import Chroma
 from ddgs import DDGS
 
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # -------------------------------------------------------------
 # Flask app setup
@@ -16,7 +20,10 @@ CORS(app)  # enable CORS for all routes (frontend can access)
 # -------------------------------------------------------------
 # Configuration
 # -------------------------------------------------------------
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "AIzaSyApO-92ScwixSHKLdG79SX2IpbsaQ6ODTQ")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+
+if not GOOGLE_API_KEY:
+    raise ValueError("GOOGLE_API_KEY environment variable is not set. Please add it to your .env file.")
 
 # -------------------------------------------------------------
 # Initialize Gemini model
